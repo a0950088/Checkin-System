@@ -3,10 +3,15 @@
 ## Notice
 
 * 環境變數和`checkin.py`要記得改
+
 * Windows排程記得早上跟晚上都要設(早上簽到晚上簽退)
+
 * 不一定要用.bat檔，想在排程裡設定路徑也可以
+
 * 也可以手動直接跑`checkin.py`簽到簽退
-* 若前面http request順利，簽到簽退的log會存在`log.txt`
+
+* Request Error log 和 簽到簽退時間 會存在`log.txt`
+
 * `run.bat` line 4 可以把REM(註解)拿掉，程式啟動時就有terminal log可以看
 
 ## User Define
