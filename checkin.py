@@ -1,12 +1,10 @@
 import os
 import requests
-from lxml import html, etree
 from datetime import datetime
 from bs4 import BeautifulSoup as BS
 import parsers
 import log
 import sys
-import time
 
 '''
 1. GET https://portal.ncu.edu.tw/endpoint?openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&openid.mode=checkid_setup&openid.return_to=https%3A%2F%2Fcis.ncu.edu.tw%2FHumanSys%2Flogin&openid.realm=https%3A%2F%2Fcis.ncu.edu.tw&openid.ns.ax=http%3A%2F%2Fopenid.net%2Fsrv%2Fax%2F1.0&openid.ax.mode=fetch_request&openid.ax.type.user_roles=http%3A%2F%2Faxschema.org%2Fuser%2Froles&openid.ax.type.contact_email=http%3A%2F%2Faxschema.org%2Fcontact%2Femail&openid.ax.type.contact_name=http%3A%2F%2Faxschema.org%2Fcontact%2Fname&openid.ax.type.contact_ename=http%3A%2F%2Faxschema.org%2Fcontact%2Fename&openid.ax.type.student_id=http%3A%2F%2Faxschema.org%2Fstudent%2Fid&openid.ax.type.alunmi_leaveSem=http%3A%2F%2Faxschema.org%2Falunmi%2FleaveSem&openid.ax.required=user_roles&openid.ax.if_available=contact_email%2Ccontact_name%2Ccontact_ename%2Cstudent_id%2Calunmi_leaveSem&openid.identity=https%3A%2F%2Fportal.ncu.edu.tw%2Fuser%2F&openid.claimed_id=https%3A%2F%2Fportal.ncu.edu.tw%2Fuser%2F
@@ -79,7 +77,7 @@ try:
     cookies = res.cookies
     print("GET ", ENDPOINT_URL, "Success")
 except Exception as err:
-    txt = f"GET {ENDPOINT_URL} error message: {err} \n"
+    txt = f"{current_time} >> GET {ENDPOINT_URL} error message: {err} \n"
     log.CheckinLog(txt)
     print("GET ", ENDPOINT_URL, "Failed")
     print("Error: ", err)
@@ -90,7 +88,7 @@ try:
     print("POST ", NCU_HOST, "Success")
     print(session.cookies)
 except Exception as err:
-    txt = f"POST {NCU_HOST} error message: {err} \n"
+    txt = f"{current_time} >> POST {NCU_HOST} error message: {err} \n"
     log.CheckinLog(txt)
     print("POST ", NCU_HOST, "Failed")
     print("Error: ", err)
@@ -99,7 +97,7 @@ try:
     res, session = HttpMethod(LEAVE_URL, 'POST', session, cookies=cookies, data=GetPortalLeavingPayload(session))
     print("POST ", LEAVE_URL, "Success")
 except Exception as err:
-    txt = f"POST {LEAVE_URL} error message: {err} \n"
+    txt = f"{current_time} >> POST {LEAVE_URL} error message: {err} \n"
     log.CheckinLog(txt)
     print("POST ", LEAVE_URL, "Failed")
     print("Error: ", err)
@@ -116,7 +114,7 @@ try:
     print("Login User: ", username)
     print("GET ", HOST, "Success")
 except Exception as err:
-    txt = f"GET {HOST} error message: {err} \n"
+    txt = f"{current_time} >> GET {HOST} error message: {err} \n"
     log.CheckinLog(txt)
     print("GET ", HOST, "Failed")
     print("Error: ", err)
@@ -136,7 +134,7 @@ try:
         sys.exit(1)
     print("GET ", NCU_CHECKIN_HOST, "Success")
 except Exception as err:
-    txt = f"GET {NCU_CHECKIN_HOST} error message: {err} \n"
+    txt = f"{current_time} >> GET {NCU_CHECKIN_HOST} error message: {err} \n"
     log.CheckinLog(txt)
     print("GET ", NCU_CHECKIN_HOST, "Failed")
     print("Error: ", err)
@@ -167,7 +165,7 @@ try:
     }
     print("GET ", NCU_CHECKIN_CREATE, "Success")
 except Exception as err:
-    txt = f"GET {NCU_CHECKIN_CREATE} error message: {err} \n"
+    txt = f"{current_time} >> GET {NCU_CHECKIN_CREATE} error message: {err} \n"
     log.CheckinLog(txt)
     print("GET ", NCU_CHECKIN_CREATE, "Failed")
     print("Error: ", err)
@@ -200,7 +198,7 @@ else:
         print("POST ", NCU_POST_CHECKIN_CREATE, "Success")
         log.CheckinLog(txt)
     except Exception as err:
-        txt = f"POST {NCU_POST_CHECKIN_CREATE} error message: {err} \n"
+        txt = f"{current_time} >> POST {NCU_POST_CHECKIN_CREATE} error message: {err} \n"
         log.CheckinLog(txt)
         print("POST ", NCU_POST_CHECKIN_CREATE, "Failed")
         print("Error: ", err)
