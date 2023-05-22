@@ -28,31 +28,29 @@
     pip install -r requirements.txt
     ```
 
-6. **Open checkin.py and set the user defined variable**
-    ```python
-    REQUIRE_SIGNIN_TIME = 8 # 需要簽到的時數
-    projectName = "工讀：111-2資工系辦工讀生" # 簽到計畫名稱(請去人事系統看，我懶得爬出來給你選XD)
-    signoutMsg = "協助工作/計畫" # 簽退工作內容
-    ```
-
-7. **Open run.bat and set path and conda env**
+6. **Open run.bat and set path and conda env**
     ```bash=
     cd `your_path`/Checkin-System
     call conda activate `your_env_name`
-    call python checkin.py
+    call python checkin.py -hour 8 -proj "計畫名稱" -msg "工作內容"
     REM pause
     ```
     REM 是註解，如果需要查看 terminal log 可將REM拿掉
+    
+    ***Arguments***
+    * `(int) hour`: 簽到時數 # default = 8
+    * `*(str) proj`: 計畫名稱 # default = ""
+    * `(str) msg`: 工作內容 # default = "協助計畫執行"
 
-8. **Set your protal account as system environment variable**
+7. **Set your protal account as system environment variable**
     
     ![](https://i.imgur.com/OBdl6F5.png)
 
-9. **Set windows scheduler**
+8. **Set windows scheduler**
     
     * 可以參考[這裡](https://titangene.github.io/article/set-up-windows-task-scheduler-to-periodically-execute-python-crawler.html)
 
-10. **Check it is work :D**
+9. **Check it is work :D**
     
     * 挑個可以簽到的好時辰
     
@@ -75,6 +73,6 @@
 
 * 不一定要用.bat檔，想在排程裡設定路徑也可以(Google is your friend :D)
 
-* 也可以手動直接跑`checkin.py`簽到簽退，只要checkin.py的`計畫名稱`是對的而且`簽到時數`滿了的話，直接執行就會簽到或簽退喔
+* 也可以手動直接跑`checkin.py`簽到簽退喔(記得加args)
 
 * 不一定要用conda跑，只要能自動跑checkin.py的方法都可以，但反正我是用conda :D
