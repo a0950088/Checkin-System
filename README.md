@@ -48,6 +48,7 @@
     * 可以參考[這裡](https://titangene.github.io/article/set-up-windows-task-scheduler-to-periodically-execute-python-crawler.html)
 
 9. **Open `config.json` and set your project**
+    ```python
     {
         "project1": {
             "projectName": str, # checkin project name
@@ -68,6 +69,7 @@
         },
         ...
     }
+    ```
 
 ## Notice
 
