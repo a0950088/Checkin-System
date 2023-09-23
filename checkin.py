@@ -1,9 +1,13 @@
 import json
+import log
 from checkin_tool import Checkin
 from datetime import datetime, timedelta
 
 CURRENT_DATETIME = datetime.now()
 SIGN_THRESHOLD = timedelta(minutes=10)
+
+DAILY_LOG = f"Daily check: {CURRENT_DATETIME.date()}"
+log.CheckinLog(DAILY_LOG)
 
 with open("config.json", "r") as f:
     config = json.load(f)
