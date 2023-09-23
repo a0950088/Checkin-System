@@ -32,38 +32,42 @@
     ```bash=
     cd `your_path`/Checkin-System
     call conda activate `your_env_name`
-    call python checkin.py -hour 8 -proj "計畫名稱" -msg "工作內容"
+    call python checkin.py
     REM pause
     ```
     REM 是註解，如果需要查看 terminal log 可將REM拿掉
-    
-    ***Arguments***
-    * `(int) hour`: 簽到時數 # default = 8
-    * `*(str) proj`: 計畫名稱 # default = ""
-    * `(str) msg`: 工作內容 # default = "協助計畫執行"
 
 7. **Set your protal account as system environment variable**
     
     ![](https://i.imgur.com/OBdl6F5.png)
 
 8. **Set windows scheduler**
-    
+    * 設定兩種時間(以間隔8小時為例)
+        1. 固定簽到時間(Ex: 早上10:00)
+        2. 固定簽退時間(Ex: 晚上18:30)
     * 可以參考[這裡](https://titangene.github.io/article/set-up-windows-task-scheduler-to-periodically-execute-python-crawler.html)
 
-9. **Check it is work :D**
-    
-    * 挑個可以簽到的好時辰
-    
-    * 按下執行按鈕
-        ![](https://i.imgur.com/ILH0U2s.png)
-    
-    * 看一下 `log.txt` 有簽到時間長得像下面那樣就算成功囉 :D
-        ![](https://i.imgur.com/QaCOyyP.png)
-    
-    * 阿如果有 `error message` 的話可能原因如下
-        1. `https://portal.ncu.edu.tw/leaving Failed` 很有可能是學校網站被玩壞了 :C
-        2. 學校網站更新
-        3. 我寫得很爛，請跟我說 :C (或是你很聰明幫我修 :D)
+9. **Open `config.json` and set your project**
+    {
+        "project1": {
+            "projectName": str, # checkin project name
+            "checkinHour": int, # required checkin hour
+            "message": str, # sign out message
+            "date": [str, str, ...] # checkin time (timestamp format "%Y-%m-%d %H:%M:%S")
+        },
+        "project2": { # example
+            "projectName": "工讀：112-1資工系辦工讀生",
+            "checkinHour": 8,
+            "message": "協助系辦事務",
+            "date": [
+                "2023-10-10 10:00:00",
+                "2023-10-10 18:30:00",
+                "2023-10-11 10:00:00",
+                "2023-10-11 18:30:00",
+            ]
+        },
+        ...
+    }
 
 ## Notice
 
@@ -71,8 +75,6 @@
 
 * Windows排程記得早上跟晚上都要設(早上簽到晚上簽退)
 
-* 不一定要用.bat檔，想在排程裡設定路徑也可以(Google is your friend :D)
+## Issue
 
-* 也可以手動直接跑`checkin.py`簽到簽退喔(記得加args)
-
-* 不一定要用conda跑，只要能自動跑checkin.py的方法都可以，但反正我是用conda :D
+* 如果簽到退間隔(checkinHour)不一樣的話要另外再設windows排程
