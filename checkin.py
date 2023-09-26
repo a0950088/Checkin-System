@@ -18,7 +18,7 @@ for data in config:
     for date in date_list:
         timestamp = datetime.strptime(date, '%Y-%m-%d %H:%M:%S')
         if timestamp.date() == CURRENT_DATETIME.date():
-            if (CURRENT_DATETIME-timestamp) < SIGN_THRESHOLD:
+            if abs(CURRENT_DATETIME-timestamp) < SIGN_THRESHOLD:
                 #checkin/out
                 if Checkin(project["projectName"],project["checkinHour"],project["message"]):
                     # pop success time
