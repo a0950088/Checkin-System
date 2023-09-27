@@ -80,3 +80,4 @@
 ## Issue
 
 * 如果簽到退間隔(checkinHour)不一樣的話要另外再設windows排程
+* 這個Error暫時忽略他(不會影響簽到簽退) `POST https://portal.ncu.edu.tw/leaving error message: ('Connection aborted.', ConnectionResetError(10054, '遠端主機已強制關閉一個現存的連線。', None, 10054, None)) `
