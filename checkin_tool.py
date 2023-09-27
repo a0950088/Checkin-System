@@ -165,7 +165,7 @@ def Checkin(projectName, requireCheckinHour, signoutMsg):
         print("Error: ", err)
 
     if signintime != []:
-        txt = '簽退時間： ' + str(CURRENT_TIME) + '\n'
+        txt = '簽退計畫： '+ projectName +'\n'+'簽退時間： ' + str(CURRENT_TIME) + '\n'
         signintime_hour = int(signintime[0].split(":")[0])
         if CURRENT_TIME.hour - signintime_hour >= requireCheckinHour:
             try:
@@ -186,7 +186,7 @@ def Checkin(projectName, requireCheckinHour, signoutMsg):
             print("Not Yet To Signout")
     else:
         print("Signin!")
-        txt = '簽到時間： ' + str(CURRENT_TIME) + '\n'
+        txt = '簽到計畫： '+ projectName +'\n' + '簽到時間： ' + str(CURRENT_TIME) + '\n'
         try:
             res, session = HttpMethod(NCU_POST_CHECKIN_CREATE, 'POST', session, cookies=cookies, data=payload)
             content = res.content.decode('utf-8')
