@@ -100,7 +100,6 @@ def Checkin(projectName, requireCheckinHour, signoutMsg):
         res, session = HttpMethod(HOST, 'GET', session)
         cookies = dict(res.cookies)
         cookies['locale'] = session.cookies.get_dict()['locale']
-        cookies['BIGipServerpool-cis'] = session.cookies.get_dict()['BIGipServerpool-cis']
         
         content = res.content.decode('utf-8')
         page = BS(content, features='lxml')
@@ -117,7 +116,6 @@ def Checkin(projectName, requireCheckinHour, signoutMsg):
         res, session = HttpMethod(NCU_CHECKIN_HOST, 'GET', session, cookies=cookies)
         cookies = dict(res.cookies)
         cookies['locale'] = session.cookies.get_dict()['locale']
-        cookies['BIGipServerpool-cis'] = session.cookies.get_dict()['BIGipServerpool-cis']
         content = res.content.decode('utf-8')
         page = BS(content, features='lxml')
         ParttimeUsuallyId = parsers.ExtractParttimeUsuallyId(page, projectName)
@@ -137,7 +135,6 @@ def Checkin(projectName, requireCheckinHour, signoutMsg):
         res, session = HttpMethod(NCU_CHECKIN_CREATE, 'GET', session, cookies=cookies, data={'ParttimeUsuallyId': ParttimeUsuallyId})
         cookies = dict(res.cookies)
         cookies['locale'] = session.cookies.get_dict()['locale']
-        cookies['BIGipServerpool-cis'] = session.cookies.get_dict()['BIGipServerpool-cis']
         
         content = res.content.decode('utf-8')
         page = BS(content, features='lxml')
