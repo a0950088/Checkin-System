@@ -4,6 +4,8 @@ from datetime import datetime
 from bs4 import BeautifulSoup as BS
 import parsers
 import log
+import requests.packages.urllib3
+requests.packages.urllib3.disable_warnings()
 
 '''
 1. GET https://portal.ncu.edu.tw/endpoint?openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&openid.mode=checkid_setup&openid.return_to=https%3A%2F%2Fcis.ncu.edu.tw%2FHumanSys%2Flogin&openid.realm=https%3A%2F%2Fcis.ncu.edu.tw&openid.ns.ax=http%3A%2F%2Fopenid.net%2Fsrv%2Fax%2F1.0&openid.ax.mode=fetch_request&openid.ax.type.user_roles=http%3A%2F%2Faxschema.org%2Fuser%2Froles&openid.ax.type.contact_email=http%3A%2F%2Faxschema.org%2Fcontact%2Femail&openid.ax.type.contact_name=http%3A%2F%2Faxschema.org%2Fcontact%2Fname&openid.ax.type.contact_ename=http%3A%2F%2Faxschema.org%2Fcontact%2Fename&openid.ax.type.student_id=http%3A%2F%2Faxschema.org%2Fstudent%2Fid&openid.ax.type.alunmi_leaveSem=http%3A%2F%2Faxschema.org%2Falunmi%2FleaveSem&openid.ax.required=user_roles&openid.ax.if_available=contact_email%2Ccontact_name%2Ccontact_ename%2Cstudent_id%2Calunmi_leaveSem&openid.identity=https%3A%2F%2Fportal.ncu.edu.tw%2Fuser%2F&openid.claimed_id=https%3A%2F%2Fportal.ncu.edu.tw%2Fuser%2F
@@ -39,9 +41,9 @@ PASSWORD = userinfo[1]
 
 def HttpMethod(url, method, session, cookies=None, data=None):
     if method == 'GET':
-        res = session.get(url, cookies=cookies, params=data)
+        res = session.get(url, cookies=cookies, params=data, verify=False)
     elif method == 'POST':
-        res = session.post(url, cookies=cookies, data=data)
+        res = session.post(url, cookies=cookies, data=data, verify=False)
     return res, session
 
 def GetPortalLoginPayload(session):
@@ -60,7 +62,7 @@ def GetPortalLeavingPayload(session):
     xsrf = session.cookies.get_dict()['XSRF-TOKEN']
     payload = {
         'chineseName': "人事系統",
-        'englishName': "人事系統",
+        'englishName': "Human+Resource+System",
         '_csrf': xsrf
     }
     return payload
