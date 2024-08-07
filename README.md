@@ -44,8 +44,7 @@
 8. **Set windows scheduler**
 
    8.1 **開啟工作排成器**
-       * win+R 輸入 `compmgmt.msc`
-       
+       - win+R 輸入 `compmgmt.msc`
        ![image](https://github.com/user-attachments/assets/e577add5-ed2b-42ac-898b-9de972b6b940)
        ![image](https://github.com/user-attachments/assets/5aadc25c-e4a0-4c76-8b25-2bd8ac568f06)
 
