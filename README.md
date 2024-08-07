@@ -111,6 +111,15 @@
     }
     ```
 
+    - 參數與NCU簽到系統的對應說明 (參考用)
+      - `projectName` 對應 `簽到工作/計畫名稱`
+        
+        ![image](https://github.com/user-attachments/assets/a95d94c8-ee35-427f-a001-c19ed1001f2d)
+
+      - `message` 對應 `工作內容`
+
+        ![image](https://github.com/user-attachments/assets/04f596e4-ebb3-4a0c-82ab-41eae4fdd4f1)
+
 ## Notice
 
 * 可從 `log.txt` 查看log message
