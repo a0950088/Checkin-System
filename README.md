@@ -42,35 +42,10 @@
     ![](https://i.imgur.com/OBdl6F5.png)
 
 8. **Set windows scheduler**
-
-   8.1 **開啟工作排成器**
-       - win+R 輸入 `compmgmt.msc`
-       ![](https://github.com/user-attachments/assets/e577add5-ed2b-42ac-898b-9de972b6b940)
-       ![image](https://github.com/user-attachments/assets/5aadc25c-e4a0-4c76-8b25-2bd8ac568f06)
-
-   8.2 **建立工作**
-       * 點選建立工作
-       ![image](https://github.com/user-attachments/assets/c7bae3a5-dc22-4a86-96c5-31c03309d59e)
-       * 設定內容
-       ![image](https://github.com/user-attachments/assets/beed09fc-b231-471b-88e2-45dac273d544)
-       * 設定觸發程序 (以簽到簽退時間間隔8小時為例)
-            1. 點選新增，設定固定簽到時間(Ex: 早上10:00)
-               ![image](https://github.com/user-attachments/assets/03ee63c5-10cd-4292-8224-90afea9909e4)
-            2. 點選新增，設定固定簽退時間(Ex: 晚上18:30)
-               ![image](https://github.com/user-attachments/assets/ca814a66-b08c-4f6e-a87c-a1f73ac5c2bd)
-           **設定完畢後如下圖**
-           ![image](https://github.com/user-attachments/assets/91a41b70-418d-4ce2-8a93-e2c5dd24b4f2)
-       * 設定動作
-           1. 點選新增，加入`run.bat`的路徑
-               ![image](https://github.com/user-attachments/assets/814c3165-c09e-4075-b677-641e2c83f9a9)
-           **設定完畢後如下圖**
-           ![image](https://github.com/user-attachments/assets/bcc340ef-4214-45dc-b7b1-afd8d632b5c2)
-       * 其他設定 (參考用)
-           ![image](https://github.com/user-attachments/assets/cf239c47-7b73-42fe-8acd-4298b683c48d)
-           ![image](https://github.com/user-attachments/assets/e8b23ec3-16f5-4dbd-8085-71f7eb87dabf)
-   8.3 **檢查排成**
-       * 建立完畢會出現在上面
-       ![image](https://github.com/user-attachments/assets/839466cd-9a08-4761-b6d3-1ce8124dc665)
+   1. **開啟工作排成器**
+      - win+R 輸入 `compmgmt.msc`
+        ![image](https://github.com/user-attachments/assets/e577add5-ed2b-42ac-898b-9de972b6b940)
+        ![image](https://github.com/user-attachments/assets/5aadc25c-e4a0-4c76-8b25-2bd8ac568f06)
 
    排成設定的參考資料在[這裡](https://titangene.github.io/article/set-up-windows-task-scheduler-to-periodically-execute-python-crawler.html)
 
