@@ -67,7 +67,7 @@ def GetPortalLeavingPayload(session):
     }
     return payload
 
-def Checkin(projectName, requireCheckinHour, signoutMsg):
+def Checkin(projectName, projectTime, requireCheckinHour, signoutMsg):
     try:
         session = requests.session()
         res, session = HttpMethod(ENDPOINT_URL, 'GET', session)
@@ -120,7 +120,7 @@ def Checkin(projectName, requireCheckinHour, signoutMsg):
         cookies['locale'] = session.cookies.get_dict()['locale']
         content = res.content.decode('utf-8')
         page = BS(content, features='lxml')
-        ParttimeUsuallyId = parsers.ExtractParttimeUsuallyId(page, projectName)
+        ParttimeUsuallyId = parsers.ExtractParttimeUsuallyId(page, projectName, projectTime)
         token = parsers.ExtractCheckinToken(page)
         print("Checkin Token: ", token)
         print("ParttimeUsuallyId : ", ParttimeUsuallyId)

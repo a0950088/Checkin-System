@@ -20,7 +20,7 @@ for data in config:
         if timestamp.date() == CURRENT_DATETIME.date():
             if abs(CURRENT_DATETIME-timestamp) < SIGN_THRESHOLD:
                 #checkin/out
-                if Checkin(project["projectName"],project["checkinHour"],project["message"]):
+                if Checkin(project["projectName"],project["projectTime"],project["checkinHour"],project["message"]):
                     # pop success time
                     print("success: ",config[data]["date"].pop(date_list.index(str(timestamp))))
                 else:

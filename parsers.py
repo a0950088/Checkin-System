@@ -9,7 +9,7 @@ def ExtractCheckinToken(page):
     token = token.get('value')
     return token
 
-def ExtractParttimeUsuallyId(page, projectName):
+def ExtractParttimeUsuallyId(page, projectName, projectTime):
     alert = page.find('div', {'class': 'alert alert-danger text-center'})
     
     if alert == None:
@@ -18,10 +18,11 @@ def ExtractParttimeUsuallyId(page, projectName):
         for r in tr:
             checkinTable = r.findAll('td')
             if checkinTable != []:
-                if checkinTable[1].contents[0] == projectName:
+                # print(checkinTable)
+                if checkinTable[1].contents[0] == projectName and checkinTable[2].contents[0] == projectTime:
                     ParttimeUsuallyId = int(checkinTable[5].find('a').get('href').split("=")[1])
-                    # print(type(ParttimeUsuallyId))
-                    # print(ParttimeUsuallyId)
+                    print(type(ParttimeUsuallyId))
+                    print(ParttimeUsuallyId)
                     return ParttimeUsuallyId
                 else:
                     continue
