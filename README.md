@@ -99,7 +99,7 @@
         },
         "project2": { # example
             "projectName": "工讀：112-1資工系辦工讀生",
-            "projectTime": "1120812 ~ 1120816 ",
+            "projectTime": "1120812 ~ 1120816 ", # 最後的空格一定要有喔(因為簽到網站最後也有空格:p)
             "checkinHour": 8,
             "message": "協助系辦事務",
             "date": [
