@@ -92,12 +92,14 @@
     {
         "project1": {
             "projectName": str, # checkin project name
+            "projectTime": str, # checkin project time range
             "checkinHour": int, # required checkin hour
             "message": str, # sign out message
             "date": [str, str, ...] # checkin time (timestamp format "%Y-%m-%d %H:%M:%S")
         },
         "project2": { # example
             "projectName": "工讀：112-1資工系辦工讀生",
+            "projectTime": "1120812 ~ 1120816 ",
             "checkinHour": 8,
             "message": "協助系辦事務",
             "date": [
@@ -113,6 +115,7 @@
 
     - 參數與NCU簽到系統的對應說明 (參考用)
       - `projectName` 對應 `簽到工作/計畫名稱`
+      - `projectTime` 對應 `僱用/學習區間起迄日`
         
         ![image](https://github.com/user-attachments/assets/a95d94c8-ee35-427f-a001-c19ed1001f2d)
 
